@@ -13,5 +13,14 @@ module RubyFunnies
 				last_response.body.should == "Welcome to Ruby Funnies"		
 			end
 		end
+		describe "today" do
+			it "includes todays date" do
+				@strips = double("Backend::Strips")
+				Backend::Strips.stub(:new).with(any_args).and_return(@strips)
+				@strips.should_receive(:load).with().and_return([Backend::Strip.new(:title,:url)])
+				get '/today'	
+				last_response.body.should include Time.now.strftime("%m/%d/%Y")
+			end
+		end
 	end
 end

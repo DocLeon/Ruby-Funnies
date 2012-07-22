@@ -1,0 +1,9 @@
+!!!!
+%html
+	%head
+		%title Ruby Funnies
+	%body
+		%h1= Time.now.strftime("%m/%d/%Y")
+		-@strips.each do |strip|
+			%h2= strip.title
+			%img{:src => strip.image_url}
