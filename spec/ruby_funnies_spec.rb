@@ -16,8 +16,8 @@ module RubyFunnies
 		describe "today" do
 			it "includes todays date" do
 				@strips = double("Backend::Strips")
-				Backend::Strips.stub(:new).with(any_args).and_return(@strips)
-				@strips.should_receive(:load).with().and_return([Backend::Strip.new(:title,:url)])
+				Backend::Strips.should_receive(:new).with(any_args).and_return(@strips)
+				@strips.should_receive(:load).with("today").and_return([Backend::Strip.new(:title,:url)])
 				get '/today'	
 				last_response.body.should include Time.now.strftime("%m/%d/%Y")
 			end

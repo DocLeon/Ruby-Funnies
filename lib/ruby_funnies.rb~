@@ -1,0 +1,16 @@
+require 'sinatra'
+require_relative 'Backend/strips'
+
+get '/' do
+	"Welcome to Ruby Funnies"
+end
+
+get '/today' do
+	Backend::Strips.new(Subscriptions.new).load
+	erb :TodaysStrips	
+end
+
+class Subscriptions
+	def load
+	end
+end

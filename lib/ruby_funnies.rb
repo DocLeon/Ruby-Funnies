@@ -8,7 +8,7 @@ get '/' do
 end
 
 get '/today' do
-	@strips = Backend::Strips.new(Subscriptions.new).load
+	@strips = Backend::Strips.new(Subscriptions.new).load("today")
 	haml :TodaysStrips	
 end
 
